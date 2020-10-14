@@ -1,0 +1,48 @@
+HADOOP
+
+Lanzamiento inicial: 2008
+Género	Ámbito software libre, código abierto
+Sistemas Operativos compatibles	multiplataforma
+Licencia: GPL
+Sitio web:[http:// hadoop.apache.org/
+
+Historia
+
+El origen de Hadoop se remonta a 2004, cuando el ingeniero de software Doug Cutting, que por aquel entonces trabajaba en Google, describe en un documento técnicas para manejar grandes volúmenes de datos, desgranándolos en problemas cada vez más pequeños para hacerlos abordables. Poco después se marchó a Yahoo y allí siguió investigando hasta completar el desarrollo de la plataforma en 2008. El propio buscador utilizaría la tecnología para su negocio, así como otras grandes compañías de Internet, como Facebook, Twitter o eBay. 
+La procedencia del nombre es mucho menos técnica de lo que se podía esperar. El hijo de tres años de Cutting llamaba a su peluche Hadoop y así bautizó su inventor a la plataforma, que también tomaría de ahí su logo, un elefante amarillo. 
+Hadoop como iniciativa Open Source (software libre) a raiz de la publicación de varios papers de Google sobre sus sistemas de archivo, su herramienta de mapas y el sistema BigTable Reduce. Como resultado nació un conjunto de soluciones en el entorno Apache: HDFS Apache, Apache MapReduce y Apache HBase; que se conocen como Hadoop, con herramientas como Sqoop (para importar datos estructurados en Hadoop cluster) o NoSQL (para realizar el análisis de los datos no estructurados) entre otros. 
+
+Características
+
+La plataforma de código abierto dispone de un sistema para almacenar información en el que ésta se replica en varias máquinas, distribuyéndose de tal manera que si una máquina se cae no se pierdan los datos. Si es necesario añadir más información se añaden más servidores sin que haya problemas de compatibilidad o reorganización de los datos. Al igual que ocurre con Linux, cualquiera puede tomar Hadoop, empaquetarlo y ofrecerlo como una distribución de la plataforma. Son varias las compañías que comercializan este tipo de solución y uno de sus principales atractivos es el algoritmo de procesamiento y búsquedas: MapReduce. Esta herramienta permite hacer consultas a una base de datos inmensa y obtener respuestas rápidas. Es capaz de enviar una orden a cada máquina para que busque en su disco duro, recolectar todas las contestaciones y ordenarlas para resolver la consulta. 
+
+Cualidades
+ 
+•	Escalabilidad: esta herramienta permite almacenar y distribuir conjuntos de datos inmensos en sus cientos de servidores que operan en paralelo, permitiendo olvidarse de los límites que otras alternativas imponen.
+•	Velocidad: garantiza una eficiencia de procesamiento que nadie puede igualar, ¿de qué otra forma se pueden procesar terabytes de información en pocos minutos?
+•	Efectividad en costes: el almacenamiento de datos se convierte en una realidad para las empresas ya que la inversión necesaria pasa de ser decenas de miles de Euros por terabyte a quedarse reducida a cientos de Euros por terabyte.
+•	Flexibilidad: Apache Hadoop se adapta a las necesidades del negocio y le acompaña en su expansión, aportando soluciones reales para cualquier iniciativa que surja.
+•	Resistencia al fracaso: su tolerancia a errores es uno de sus atributos mejor valorados por los usuarios ya que toda la información contenida en cada nodo tiene su réplica en otros nodos del cluster. En caso de producirse un fallo siempre existirá una copia lista para ser usada.
+
+Ecosistema de Hadoop
+
+Hadoop es un sistema que se basa en dos grandes partes, los archivos HDFS y el sistema MapReduce. Sin embargo, también comentamos que el programa contenía numerosos programas que permitían facilitarle la vida al científico de datos, haciendo que no fuera necesario operar mediante la realización de complicados algoritmos. 
+A continuación describimos cuáles son las herramientas que nos proporciona el ecosistema Hadoop: 
+•	Eclipse. Es un entorno de desarrollo integrado, donado por IBM a la comunidad Apache. Agiliza enormemente el desarrollo de los programas Java.
+•	Sqoop. Nos permite conectarnos a cualquier base de datos relacional e intercambiar datos con nuestro sistema de ficheros HDFS. Es muy importante poder incorporar fácilmente datos de nuestras bases de datos (datawarehouse, ERPs, etc.) y del mismo modo, poder llevar fácilmente el resultado de un cálculo (scoring, segmentación…) a nuestras bases de datos.
+•	Flume. Nos permite recuperar información de sitios remotos. Mediante un agente que se ejecuta en el lugar que se producen los datos (fichero de log…), recoge los datos y los importa en HDFS. Es unidireccional, no permite exportar datos de HDFS a otras ubicaciones. Resulta una herramienta francamente útil para recuperar información en tiempo real.
+•	Hive. Actúa como la base de datos de Hadoop. Es un intérprete SQL – MapReduce. Traduce la query a programas Java que realicen los MapReduce, lo que Esto permite utilizar herramientas de Business Intelligence convencionales (que admitan conexión ODBC) con los datos de HDFS.
+•	Pig: para trabajar con MapReduce, es necesario programar, tener sólidos conocimientos de Java, saber cómo funciona MapReduce, conocer el problema a resolver, escribir, probar y mantener el código, etc. Para ello es muy beneficioso disponer de un sistema más sencillo, que nos abstraiga de la complejidad del MapReduce. Pig cumple precisamente esta función; facilita el flujo de datos de una manera más sencilla. Dispone de su propio lenguaje de programación llamado Pig Latin.
+•	Hbase. Es una base de datos columnar que se ejecuta sobre HDFS. Puede almacenar grandes cantidades de datos, accediendo a los mismos de una manera rápida, pudiendo procesarlos sin problemas incluso si hay datos dispersos.
+•	Oozie. Actúa como un planificador. Es un motor de flujos de trabajo que puede incluir procesos MapReduce , scripts de Pig, de Hive, etc.
+•	Zookeeper. Como su propio nombre indica, Zookeeper cumple el rol de coordinador del ecosistema Hadoop, guardando la configuración de los metadatos, bloqueando un proceso cuando accede al mismo fichero al mismo tiempo que otro proceso, guardando los usuarios y las contraseñas de acceso a los distintos lugares, etc.
+•	Mahout. Es una librería de algortimos de Machine Learning, codificados en Java. Qué es un programa que aprende por sí mismo.
+
+Arquitectura
+
+La escalabilidad y disponibilidad son otras de sus claves, gracias a la replicación de los datos y tolerancia a los fallos. Los elementos importantes del cluster: 
+•	NameNode: Sólo hay uno en el cluster. Regula el acceso a los ficheros por parte de los clientes. Mantiene en memoria la metadata del sistema de ficheros y control de los bloques de fichero que tiene cada DataNode.
+•	DataNode: Son los responsables de leer y escribir las peticiones de los clientes. Los ficheros están formados por bloques, estos se encuentran replicados en diferentes nodos.
+•	MapReduce: MapReduce es un proceso batch, creado para el proceso distribuido de los datos. Permite de una forma simple, paralelizar trabajo sobre los grandes volúmenes de datos, como combinar web logs con los datos relacionales de una base de datos OLTP, de esta forma ver como los usuarios interactúan con el website.
+El modelo de MapReduce simplifica el procesamiento en paralelo, abstrayéndonos de la complejidad que hay en los sistemas distribuidos. Básicamente las funciones Map transforman un conjunto de datos a un número de pares key/value. Cada uno de estos elementos se encontrará ordenado por su clave, y la función reduce es usada para combinar los valores (con la misma clave) en un mismo resultado. Un programa en MapReduce, se suele conocer como Job, la ejecución de un Job empieza cuando el cliente manda la configuración de Job al JobTracker, esta configuración especifica las funciones Map, Combine (shuttle) y Reduce, además de la entrada y salida de los datos.
+
